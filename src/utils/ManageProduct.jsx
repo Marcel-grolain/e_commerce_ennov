@@ -12,3 +12,15 @@ export const ManageProduct = () => {
 
   return { products, addProductx };
 };
+
+export const GetLastNonNullId = (products) => {
+  let lastNonNullId = null;
+  console.log(products);
+  for (const product of products) {
+      if (product.id !== null) {
+          lastNonNullId = product.id;
+      }
+  }
+
+  return lastNonNullId + 1;
+};

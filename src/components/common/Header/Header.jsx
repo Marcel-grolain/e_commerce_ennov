@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../hooks/useAuth';
 import Swal from 'sweetalert2'
 
 function Header() {
     const { logout, usernamelogin } = useAuth();
+
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = '/assets/js/script.js';
+        script.async = true;
+        document.body.appendChild(script);
+    
+        return () => {
+        document.body.removeChild(script);
+        };
+    }, []);
 
     const handleLogout = () => {
         Swal.fire({
@@ -37,7 +48,7 @@ function Header() {
                 </Link>
             </div>
 
-            <Link id="mobile_btn" className="mobile_btn" to="#sidebar">
+            <Link id="mobile_btn" className="mobile_btn" to="#">
                 <span className="bar-icon">
                     <span />
                     <span />

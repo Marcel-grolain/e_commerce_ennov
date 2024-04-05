@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Navigate  } from 'react-router-dom';
-import { ManageProduct } from '../../../utils/ManageProduct';
+import { useAuth } from '../../../hooks/useAuth';
+import { ManageProduct, GetLastNonNullId } from '../../../utils/ManageProduct';
 import Header from "../../common/Header/Header";
 import Sidebar from "../../common/Sidebar/Sidebar";
 
 
 
 function AddProduct(props) {
+    const { products } = useAuth();
     const { addProductx } = ManageProduct();
     const [redirectToProductlList, setRedirectToProductList] = useState(false);
 
@@ -21,8 +23,9 @@ function AddProduct(props) {
         };
     }, []);
 
+
     const [newProduct, setNewProduct] = useState({
-        id: null,
+        id: GetLastNonNullId(products),
         title: '',
         price: 0,
         description: '',
@@ -32,7 +35,7 @@ function AddProduct(props) {
     });
 
     const handleChange = (e) => {
-        
+        console.log(newProduct.id)
         const { name, value } = e.target;
         setNewProduct({ ...newProduct, [name]: value });
     };
