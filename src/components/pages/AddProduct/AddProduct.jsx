@@ -35,7 +35,6 @@ function AddProduct(props) {
     });
 
     const handleChange = (e) => {
-        console.log(newProduct.id)
         const { name, value } = e.target;
         setNewProduct({ ...newProduct, [name]: value });
     };

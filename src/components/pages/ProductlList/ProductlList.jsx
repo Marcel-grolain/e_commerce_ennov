@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import './style.css';
+
 import { useAuth } from '../../../hooks/useAuth';
 import Header from "../../common/Header/Header";
 import Sidebar from "../../common/Sidebar/Sidebar";
@@ -7,7 +10,7 @@ import Swal from 'sweetalert2'
 import $ from 'jquery';
 import 'datatables.net'; 
 import 'datatables.net-bs4';
-import './style.css'
+import { deleteProduct } from '../../../services/api';
 
 function ProductlList(props) {
     const { products, setProduct } = useAuth();
@@ -52,7 +55,7 @@ function ProductlList(props) {
         setProduct(products);
     }, [products, setProduct]);
 
-    const deleteProduct = (productId) => {
+    const deleteProductId = (productId) => {
 
         Swal.fire({
             title: 'Are you sure?',
@@ -64,26 +67,18 @@ function ProductlList(props) {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
+                
+                const response = deleteProduct(productId);
+                
 
-                fetch(`https://fakestoreapi.com/products/${productId}`, {
-                    method: "DELETE"
-                })
-                .then(res => {
-                    if (!res.ok) {
-                        throw new Error(`HTTP error! Status: ${res.status}`);
-                    }
-                    console.log("Product deleted successfully.");
+                Swal.fire(
+                    'Deleted!',
+                    'Your product has been deleted.',
+                    'success'
+                );
 
-                    Swal.fire(
-                        'Deleted!',
-                        'Your product has been deleted.',
-                        'success'
-                    );
-
-                    const updatedProductList = products.filter(product => product.id !== productId);
-                    setProduct(updatedProductList);
-                })
-                .catch(error => console.error('Error:', error));
+                const updatedProductList = products.filter(product => product.id !== productId);
+                setProduct(updatedProductList);
 
             }
         });
@@ -240,7 +235,7 @@ function ProductlList(props) {
                                                     <Link className="me-3" to={`/editproduct/${product.id}`}>
                                                         <img src="/assets/img/icons/edit.svg" alt="img" />
                                                     </Link>
-                                                    <Link className="confirm-text" onClick={() => deleteProduct(product.id)}>
+                                                    <Link className="confirm-text" onClick={() => deleteProductId(product.id)}>
                                                         <img src="/assets/img/icons/delete.svg" alt="img" />
                                                     </Link>
                                                 </td>

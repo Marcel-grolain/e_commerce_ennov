@@ -109,3 +109,21 @@ export const getAllProduct = async () => {
         throw error; // Renvoyer l'erreur pour une gestion plus approfondie si nécessaire
     }
 };
+
+export const deleteProduct = async (productId) => {
+    try {
+        const response = await fetch(`${BASE_URL}/products/${productId}`, {
+            method: "DELETE"
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        console.log("Product deleted successfully.");
+        return true;
+        
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
