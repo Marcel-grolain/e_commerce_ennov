@@ -44,6 +44,7 @@ export const AuthProvider = ({ children }) => {
 
     const setProduct  = (updatedProducts) => {
         setProducts(updatedProducts);
+        localStorage.setItem('products', JSON.stringify(updatedProducts));
     }
     
 

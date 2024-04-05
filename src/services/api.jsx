@@ -120,8 +120,10 @@ export const deleteProduct = async (productId) => {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        console.log("Product deleted successfully.");
-        return true;
+        if (response.status === 200) {
+            console.log("Product deleted successfully.");
+            return true;
+        }
         
     } catch (error) {
         console.error('Error:', error);

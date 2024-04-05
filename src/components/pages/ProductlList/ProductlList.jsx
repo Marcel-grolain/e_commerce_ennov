@@ -67,23 +67,24 @@ function ProductlList(props) {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                
                 const response = deleteProduct(productId);
-                
+                if (response) {
 
-                Swal.fire(
-                    'Deleted!',
-                    'Your product has been deleted.',
-                    'success'
-                );
-
-                const updatedProductList = products.filter(product => product.id !== productId);
-                setProduct(updatedProductList);
-
+                    Swal.fire(
+                        'Deleted!',
+                        'Your product has been deleted.',
+                        'success'
+                    );
+    
+                    const updatedProductList = products.filter(product => product.id !== productId);
+                    console.log(updatedProductList);
+                    setProduct(updatedProductList);
+                }
             }
         });
     }
 
+    console.log(products);
     
     return (
 
