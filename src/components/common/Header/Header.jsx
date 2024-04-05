@@ -4,20 +4,19 @@ import { useAuth } from '../../../hooks/useAuth';
 import Swal from 'sweetalert2'
 
 function Header() {
-    const { logout } = useAuth();
+    const { logout, usernamelogin } = useAuth();
 
     const handleLogout = () => {
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            text: "Would you like to log out ?",
             icon: 'info',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Yes, log out!'
         }).then((result) => {
             if (result.isConfirmed) {
-
                 logout();
             }
         });
@@ -196,7 +195,7 @@ function Header() {
                                 <span className="user-img"><img src="https://media.licdn.com/dms/image/C5603AQF7rAa0KfVikQ/profile-displayphoto-shrink_800_800/0/1660253501314?e=1717632000&v=beta&t=i2RW_Vbtd4zkt4k07lz_ny2Iw8w1NW9EhmpVVh5bT5s" alt="Photo_Marcel" />
                                     <span className="status online" /></span>
                                 <div className="profilesets">
-                                    <h6>John Doe</h6>
+                                    <h6>{usernamelogin}</h6>
                                     <h5>Admin</h5>
                                 </div>
                             </div>

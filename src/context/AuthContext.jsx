@@ -9,6 +9,8 @@ export const AuthProvider = ({ children }) => {
         return JSON.parse(localStorage.getItem('isLoggedIn')) || false;
     });
 
+    const [usernamelogin, setUsernameLogin] = useState('');
+
     const [products, setProducts] = useState(() => {
         const storedProducts = localStorage.getItem('products');
         if (storedProducts !== undefined) {
@@ -63,10 +65,15 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('isLoggedIn', 'true');
     };
 
+    const setDataUsername = (UsernameLogin, token) => {
+        setUsernameLogin(UsernameLogin);
+    }
+
     // Fonction pour déconnecter l'utilisateur
     const logout = () => {
         // Mettre à jour l'état de connexion et supprimer du local storage
         setIsLoggedIn(false);
+        setUsernameLogin('');
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('products');
     };
@@ -77,6 +84,8 @@ export const AuthProvider = ({ children }) => {
         logout,
         products,
         setProduct,
+        usernamelogin,
+        setDataUsername,
     };
 
     return (

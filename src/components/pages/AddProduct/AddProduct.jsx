@@ -7,7 +7,7 @@ import Sidebar from "../../common/Sidebar/Sidebar";
 
 
 function AddProduct(props) {
-    const { addProduct } = ManageProduct();
+    const { addProductx } = ManageProduct();
     const [redirectToProductlList, setRedirectToProductList] = useState(false);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ function AddProduct(props) {
         document.body.appendChild(script);
     
         return () => {
-        document.body.removeChild(script);
+            document.body.removeChild(script);
         };
     }, []);
 
@@ -32,13 +32,14 @@ function AddProduct(props) {
     });
 
     const handleChange = (e) => {
+        
         const { name, value } = e.target;
         setNewProduct({ ...newProduct, [name]: value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addProduct(newProduct);
+        addProductx(newProduct);
         setRedirectToProductList(true);
     };
 

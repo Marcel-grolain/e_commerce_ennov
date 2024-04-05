@@ -8,7 +8,7 @@ import { authenticateUser } from '../../../services/auth';
 
 
 function LoginPage(props) {
-    const { login } = useAuth();
+    const { login, setDataUsername } = useAuth();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -36,8 +36,8 @@ function LoginPage(props) {
             const user = await authenticateUser({ username, password });
             
             const token = user.token;
-            console.log(token); 
             setIsLoggedIn(true); 
+            setDataUsername(username, token);
             login();
 
         } catch (error) {
