@@ -23,23 +23,25 @@ export const AuthProvider = ({ children }) => {
         return [];
     });
     
-
     useEffect(() => {
         // Sauvegarder la valeur de isLoggedIn dans le local storage
         localStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
     }, [isLoggedIn]);
-
+    
     useEffect(() => {
         const storedProducts = localStorage.getItem('products');
-        if (storedProducts !== undefined) {
+        if (storedProducts === undefined || storedProducts === null || (Array.isArray(products) && products.length === 0)) {
+            fetchProdcutData();
+        }
+        else {
             try {
-                if (!storedProducts) {
-                    fetchProdcutData();
-                }
+                setProducts(JSON.parse(storedProducts));
             } catch (error) {
                 console.error('Error parsing JSON:', error);
             }
         }
+        
+
     }, []);
 
     const setProduct  = (updatedProducts) => {
@@ -64,6 +66,7 @@ export const AuthProvider = ({ children }) => {
         // et si elles sont valides, vous mettriez à jour l'état de connexion et stockeriez dans le local storage
         setIsLoggedIn(true);
         localStorage.setItem('isLoggedIn', 'true');
+        fetchProdcutData();
     };
 
     const setDataUsername = (UsernameLogin, token) => {

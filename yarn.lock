@@ -3394,7 +3394,7 @@ cjs-module-lexer@^1.0.0:
   resolved "https://registry.yarnpkg.com/cjs-module-lexer/-/cjs-module-lexer-1.2.3.tgz#6c370ab19f8a3394e318fe682686ec0ac684d107"
   integrity sha512-0TNiGstbQmCFwt4akjjBg5pLRTSyj/PkWQ1ZoO2zntmg9yLqSRxwEa4iCfQLGjqhiqBfOJa7W/E8wfGrTDmlZQ==
 
-classnames@^2.3.2:
+classnames@^2.2.5, classnames@^2.3.2:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.5.1.tgz#ba774c614be0f016da105c858e7159eae8e7687b"
   integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
@@ -3594,7 +3594,7 @@ core-js-pure@^3.23.3:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.36.1.tgz#1461c89e76116528b54eba20a0aff30164087a94"
   integrity sha512-NXCvHvSVYSrewP0L5OhltzXeWFJLo2AL2TYnj6iLV3Bw8mM62wAQMNgUCRI6EBu6hVVpbCxmOPlxh1Ikw2PfUA==
 
-core-js@^3.19.2:
+core-js@^3.1.3, core-js@^3.19.2:
   version "3.36.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.36.1.tgz#c97a7160ebd00b2de19e62f4bbd3406ab720e578"
   integrity sha512-BTvUrwxVBezj5SZ3f10ImnX2oRByMxql3EimVqMysepbC9EeMUOpLwdy6Eoili2x6E4kf+ZUB5k/+Jv55alPfA==
@@ -3955,7 +3955,7 @@ datatables.net-bs4@^2.0.3:
     datatables.net "2.0.3"
     jquery ">=1.7"
 
-datatables.net@2.0.3:
+datatables.net@2.0.3, datatables.net@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/datatables.net/-/datatables.net-2.0.3.tgz#55456745e3f305698288a17f83955bc1c5ff48a6"
   integrity sha512-phq7jhkjIlVdahZYa2nd/yeiDgFrvT++Sily3GgztG3T7qqdAWkjtLuGA2Pv5p7XBwkJ0zwf+0KDRU54uR7WAg==
@@ -4929,6 +4929,14 @@ fb-watchman@^2.0.0:
   integrity sha512-p5161BqbuCaSnB8jIbzQHOlpgsPmK5rJVDfDKO91Axs5NC1uu3HRQm6wt9cd9/+GtQQIO53JdGXXoyDpTAsgYA==
   dependencies:
     bser "2.1.1"
+
+feather-icons@^4.29.1:
+  version "4.29.1"
+  resolved "https://registry.yarnpkg.com/feather-icons/-/feather-icons-4.29.1.tgz#f222aaa4cc6fca499356660c9de6c009ee2cb117"
+  integrity sha512-P1we61haGTds6lKWe6CCVPsNULb8tHr1y6S9gXEpU+lNR1Ja7GdV0A1l2hTNmzXv+0Stix/3YMWMAn7n1Qtd6A==
+  dependencies:
+    classnames "^2.2.5"
+    core-js "^3.1.3"
 
 file-entry-cache@^6.0.1:
   version "6.0.1"
