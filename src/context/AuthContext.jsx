@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
         }
         
 
-    }, []);
+    }, [products]);
 
     const setProduct  = (updatedProducts) => {
         setProducts(updatedProducts);

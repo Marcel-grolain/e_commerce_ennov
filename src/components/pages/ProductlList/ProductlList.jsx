@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
 import { useAuth } from '../../../hooks/useAuth';
@@ -6,7 +6,7 @@ import Header from "../../common/Header/Header";
 import Sidebar from "../../common/Sidebar/Sidebar";
 import Swal from 'sweetalert2'
 import $ from 'jquery';
-import 'datatables.net'; 
+import 'datatables.net';
 import 'datatables.net-bs4';
 import { deleteProduct } from '../../../services/api';
 import feather from 'feather-icons';
@@ -14,10 +14,6 @@ import feather from 'feather-icons';
 
 function ProductlList(props) {
     const { products, setProduct } = useAuth();
-
-    const $wrapper = useRef(null);
-    //const $slimScrolls = useRef(null);
-    //const $pageWrapper = useRef(null);
 
     useEffect(() => {
         feather.replace();
@@ -30,9 +26,20 @@ function ProductlList(props) {
         });
 
         $('body').append('<div class="sidebar-overlay"></div>');
+        let i = 0;
 
         $(document).on('click', '#mobile_btn', () => {
-            $($wrapper.current).toggleClass('slide-nav');
+            var element = document.querySelector('.main-wrapper'); // Sélectionne l'élément avec la classe 'slide-navd'
+            i++;
+
+            if (i === 1) {
+                element.classList.remove('slide-nav');
+                element.classList.add('slide-nav');
+            }else if (i === 2) {
+                element.classList.remove('slide-nav');
+                i = 0;
+            }
+
             $('.sidebar-overlay').toggleClass('opened');
             $('html').addClass('menu-opened');
             $('#task_window').removeClass('opened');
@@ -42,7 +49,7 @@ function ProductlList(props) {
         $(".sidebar-overlay").on("click", () => {
             $('html').removeClass('menu-opened');
             $('.sidebar-overlay').removeClass('opened');
-            $($wrapper.current).removeClass('slide-nav');
+            $('.main-wrapper').removeClass('slide-nav');
             $('#task_window').removeClass('opened');
         });
 
@@ -69,17 +76,18 @@ function ProductlList(props) {
         return () => {
             // Nettoyage des effets lorsque le composant est démonté
             $('.sidebar-overlay').remove();
+            $('.main-wrapper').removeClass('slide-nav');
         };
-    }, [$wrapper]);
+    }, []);
 
     useEffect(() => {
         const script = document.createElement('script');
         script.src = 'assets/js/script.js';
         script.async = true;
         document.body.appendChild(script);
-    
+
         return () => {
-        document.body.removeChild(script);
+            document.body.removeChild(script);
         };
     }, []);
 
@@ -132,7 +140,7 @@ function ProductlList(props) {
                         'Your product has been deleted.',
                         'success'
                     );
-    
+
                     const updatedProductList = products.filter(product => product.id !== productId);
                     console.log(updatedProductList);
                     setProduct(updatedProductList);
@@ -142,10 +150,10 @@ function ProductlList(props) {
     }
 
     console.log(products);
-    
+
     return (
 
-        <div className="main-wrapper" ref={$wrapper}>
+        <div className="main-wrapper">
 
             <Header />
 
