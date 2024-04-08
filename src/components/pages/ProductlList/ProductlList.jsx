@@ -4,12 +4,12 @@ import './style.css';
 import { useAuth } from '../../../hooks/useAuth';
 import Header from "../../common/Header/Header";
 import Sidebar from "../../common/Sidebar/Sidebar";
-import Swal from 'sweetalert2'
 import $ from 'jquery';
 import { setupSidebar } from '../../../ressources/setupSidebar';
 import 'datatables.net';
 import 'datatables.net-bs4';
 import { deleteProduct } from '../../../services/api';
+import Swal from 'sweetalert2'
 
 
 function ProductlList(props) {

@@ -5,6 +5,7 @@ import { setupSidebar } from '../../../ressources/setupSidebar';
 import { ManageUpdateProduct } from '../../../utils/ManageUpdateProduct';
 import Header from "../../common/Header/Header";
 import Sidebar from "../../common/Sidebar/Sidebar";
+import Swal from 'sweetalert2'
 
 
 function EditProduct(props) {
@@ -50,15 +51,31 @@ function EditProduct(props) {
     };
 
     const handleUpdate = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Voulez-vous apoter des modifications sur ce produit ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-        updateProduct(productId, productDetails);
-        // Redirection vers /productlist après la mise à jour
-        setRedirectToProductList(true);
+                Swal.fire(
+                    'Update!',
+                    'Your product has been update.',
+                    'success'
+                );
+
+                updateProduct(productId, productDetails);
+                setRedirectToProductList(true);
+
+            }
+        });
     };
 
-    if (redirectToProductlList) {
-        return <Navigate to="/productlist" />;
-    }
+    if (redirectToProductlList) return <Navigate to="/productlist" />;
 
 
     return (

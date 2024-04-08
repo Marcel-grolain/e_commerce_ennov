@@ -17,9 +17,7 @@ function AddProduct(props) {
 
     useEffect(() => {
         setupSidebar();
-
         return () => {
-            // Nettoyage des effets lorsque le composant est démonté
             $('.sidebar-overlay').remove();
             $('.main-wrapper').removeClass('slide-nav');
         };

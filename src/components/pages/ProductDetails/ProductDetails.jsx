@@ -16,7 +16,6 @@ function ProductDetails(props) {
 
     useEffect(() => {
         setupSidebar();
-
         return () => {
             // Nettoyage des effets lorsque le composant est démonté
             $('.sidebar-overlay').remove();
