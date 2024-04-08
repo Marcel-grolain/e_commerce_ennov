@@ -59,9 +59,7 @@ function ProductlList(props) {
         }
     }, [products]);
 
-
     useEffect(() => {
-        // Mettez à jour la liste des produits au chargement initial du composant
         setProduct(products);
     }, [products, setProduct]);
 

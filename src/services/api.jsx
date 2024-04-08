@@ -1,12 +1,7 @@
 import { BASE_URL } from "../utils/constants";
 
 
-/**
- * Effectue une requête POST pour authentifier un utilisateur.
- * @param {Object} credentials - Les identifiants de l'utilisateur (email, password).
- * @returns {Promise<Object>} Une promesse contenant les données de l'utilisateur authentifié.
- * @throws {Error} Erreur si la requête échoue ou si les identifiants sont incorrects.
- */
+
 export const loginUser = async (credentials) => {
     try {
         const response = await fetch(`${BASE_URL}/auth/login`, {
@@ -26,12 +21,6 @@ export const loginUser = async (credentials) => {
 };
 
 
-/**
- * Effectue une requête POST pour créer un nouvel utilisateur.
- * @param {Object} userData - Les données de l'utilisateur à créer.
- * @returns {Promise<Object>} Une promesse contenant les données de l'utilisateur créé.
- * @throws {Error} Erreur si la requête échoue ou si les données de l'utilisateur sont invalides.
- */
 export const registerUser = async (userData) => {
     try {
         const response = await fetch(`${BASE_URL}/users/register`, {
@@ -50,11 +39,6 @@ export const registerUser = async (userData) => {
     }
 };
 
-
-/**
- * Effectue une requête GET pour obtenir la liste des utilisateurs.
- * @returns {Promise<Array>} Une promesse contenant un tableau d'utilisateurs.
- */
 export async function getAllUsers() {
     try {
         const response = await fetch(`${BASE_URL}/users`);
@@ -70,12 +54,6 @@ export async function getAllUsers() {
     }
 }
 
-
-/**
- * Effectue une requête POST pour créer un nouvel utilisateur.
- * @param {Object} userData - Les données de l'utilisateur à créer.
- * @returns {Promise<Object>} Une promesse contenant les données de l'utilisateur créé.
- */
 export async function createUser(userData) {
     try {
         const response = await fetch(`${BASE_URL}/users`, {
@@ -106,7 +84,6 @@ export const getAllProduct = async () => {
         return data;
     } catch (error) {
         console.error('Error fetching products:', error);
-        throw error; // Renvoyer l'erreur pour une gestion plus approfondie si nécessaire
     }
 };
 

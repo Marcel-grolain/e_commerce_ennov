@@ -7,8 +7,7 @@ import { ManageProduct, GetLastNonNullId } from '../../../utils/ManageProduct';
 import PageWrapper from '../../common/PageWrapper/PageWrapper';
 import Header from "../../common/Header/Header";
 import Sidebar from "../../common/Sidebar/Sidebar";
-import Swal from 'sweetalert2'
-
+import Swal from 'sweetalert2';
 
 
 function AddProduct(props) {
@@ -62,7 +61,7 @@ function AddProduct(props) {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, update it!'
+            confirmButtonText: 'Yes, add it!'
         }).then((result) => {
             if (result.isConfirmed) {
 
@@ -74,7 +73,6 @@ function AddProduct(props) {
         
                 addProductx(newProduct);
                 setRedirectToProductList(true);
-
             }
         });
     };

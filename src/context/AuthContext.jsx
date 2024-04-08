@@ -5,7 +5,6 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
-        // Récupérer la valeur de isLoggedIn du local storage ou définir par défaut à false
         return JSON.parse(localStorage.getItem('isLoggedIn')) || false;
     });
 
@@ -24,24 +23,12 @@ export const AuthProvider = ({ children }) => {
     });
     
     useEffect(() => {
-        // Sauvegarder la valeur de isLoggedIn dans le local storage
         localStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
     }, [isLoggedIn]);
     
     useEffect(() => {
         const storedProducts = localStorage.getItem('products');
-        if (storedProducts === undefined || storedProducts === null || (Array.isArray(products) && products.length === 0)) {
-            fetchProdcutData();
-        }
-        else {
-            try {
-                setProducts(JSON.parse(storedProducts));
-            } catch (error) {
-                console.error('Error parsing JSON:', error);
-            }
-        }
-        
-
+        if (storedProducts === undefined || storedProducts === null || (Array.isArray(products) && products.length === 0)) fetchProdcutData();
     }, [products]);
 
     const setProduct  = (updatedProducts) => {
@@ -62,8 +49,6 @@ export const AuthProvider = ({ children }) => {
 
     // Fonction pour connecter l'utilisateur
     const login = () => {
-        // Ici, vous effectueriez la vérification des informations d'identification
-        // et si elles sont valides, vous mettriez à jour l'état de connexion et stockeriez dans le local storage
         setIsLoggedIn(true);
         localStorage.setItem('isLoggedIn', 'true');
         fetchProdcutData();
@@ -75,7 +60,6 @@ export const AuthProvider = ({ children }) => {
 
     // Fonction pour déconnecter l'utilisateur
     const logout = () => {
-        // Mettre à jour l'état de connexion et supprimer du local storage
         setIsLoggedIn(false);
         setUsernameLogin('');
         localStorage.removeItem('isLoggedIn');
