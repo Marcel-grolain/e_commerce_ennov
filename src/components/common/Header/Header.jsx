@@ -8,7 +8,7 @@ function Header() {
 
     useEffect(() => {
         const script = document.createElement('script');
-        script.src = 'assets/js/script.js';
+        script.src = '/assets/js/script.js';
         script.async = true;
         document.body.appendChild(script);
     
