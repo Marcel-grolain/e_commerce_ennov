@@ -7,6 +7,7 @@ import { ManageProduct, GetLastNonNullId } from '../../../utils/ManageProduct';
 import PageWrapper from '../../common/PageWrapper/PageWrapper';
 import Header from "../../common/Header/Header";
 import Sidebar from "../../common/Sidebar/Sidebar";
+import Swal from 'sweetalert2'
 
 
 
@@ -51,8 +52,31 @@ function AddProduct(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addProductx(newProduct);
-        setRedirectToProductList(true);
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Voulez-vous create ce produit ?",
+            icon: 'info',
+            iconColor: '#ff9f43',
+            color: '#ff9f43',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                Swal.fire(
+                    'Add new product!',
+                    'Your product has been add.',
+                    'success'
+                );
+        
+                addProductx(newProduct);
+                setRedirectToProductList(true);
+
+            }
+        });
     };
 
     if (redirectToProductlList) return <Navigate to="/productlist" />;

@@ -87,9 +87,7 @@ function LoginPage(props) {
         });
     }
 
-    if (redirectToDashboard) {
-        return <Navigate to="/dashboard" />;
-    }
+    if (redirectToDashboard) return <Navigate to="/dashboard" />;
 
     
 

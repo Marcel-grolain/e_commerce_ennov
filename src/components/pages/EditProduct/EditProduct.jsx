@@ -54,7 +54,9 @@ function EditProduct(props) {
         Swal.fire({
             title: 'Are you sure?',
             text: "Voulez-vous apoter des modifications sur ce produit ?",
-            icon: 'warning',
+            icon: 'info',
+            iconColor: '#ff9f43',
+            color: '#ff9f43',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',

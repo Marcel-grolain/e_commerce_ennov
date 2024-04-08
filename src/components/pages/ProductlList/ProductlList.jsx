@@ -71,6 +71,8 @@ function ProductlList(props) {
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             icon: 'warning',
+            iconColor: '#ff9f43',
+            color: '#ff9f43',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
@@ -93,8 +95,6 @@ function ProductlList(props) {
             }
         });
     }
-
-    console.log(products);
 
     return (
 

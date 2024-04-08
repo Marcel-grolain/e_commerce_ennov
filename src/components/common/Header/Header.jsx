@@ -22,6 +22,8 @@ function Header() {
             title: 'Are you sure?',
             text: "Would you like to log out ?",
             icon: 'info',
+            iconColor: '#ff9f43',
+            color: '#ff9f43',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
