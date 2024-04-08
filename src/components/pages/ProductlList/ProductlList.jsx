@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
 import { useAuth } from '../../../hooks/useAuth';
@@ -14,6 +14,7 @@ import Swal from 'sweetalert2'
 
 function ProductlList(props) {
     const { products, setProduct } = useAuth();
+    const [dataTableKey, setDataTableKey] = useState(Date.now());
 
     useEffect(() => {
         setupSidebar();
@@ -37,9 +38,7 @@ function ProductlList(props) {
     }, []);
 
     useEffect(() => {
-        // Vérifiez si DataTable est déjà initialisé sur l'élément .datanew
         if (!$('.datanew').hasClass('dataTable')) {
-            // Si ce n'est pas le cas, initialisez DataTable
             $('.datanew').DataTable({
                 "bFilter": true,
                 "sDom": 'fBtlpi',
@@ -57,7 +56,7 @@ function ProductlList(props) {
                 },
             });
         }
-    }, [products]);
+    }, [dataTableKey]);
 
     useEffect(() => {
         setProduct(products);
@@ -89,6 +88,7 @@ function ProductlList(props) {
                     const updatedProductList = products.filter(product => product.id !== productId);
                     console.log(updatedProductList);
                     setProduct(updatedProductList);
+                    setDataTableKey(Date.now());
                 }
             }
         });
